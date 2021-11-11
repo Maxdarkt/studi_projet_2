@@ -9,34 +9,41 @@
     <link rel="stylesheet" href="./src/css/css/all.css">
     <title>Game</title>
 </head>
-<body>
+<body class="fixed top-0 left-0 w-screen h-screen bg-gray-300 flex justify-center items-center">
 
-    <section class="container border border-indigo-600 mx-auto mt-5">
+    <section class="container border border-indigo-600 h-3/4">
         <div id="container-title" class="flex justify-center items-center">
             <i class="fas fa-plus-circle"></i>
             <h1 class="ml-2">New Game</h1>
         </div>
-        <div id="container-play" class="grid grid-cols-8 h-96">
-            <div class="col-span-3 border border-green-600 min-h-full">
-                <div class="flex justify-center mt-5 text-2xl">
-                    <p>PLAYER</p>
-                </div>
-                <div class="flex justify-center mt-5 text-2xl">
-                    <p>SCORE</p>
-                </div>
+        <div id="container-play" class="grid grid-cols-8">
+            <div class="col-span-3 bg-blue-400 flex justify-center mt-5 text-2xl">
+                <p>PLAYER 1</p>
             </div>
-            <div class="col-span-2 border border-green-600 min-h-full">
-
+            <div class="col-end-9 col-span-3 bg-blue-400 flex justify-center mt-5 text-2xl">
+                <p>PLAYER 2</p>
             </div>
-            <div class="col-span-3 border border-green-600 min-h-full">
-                <div class="flex justify-center mt-5 text-2xl">
-                    <p>PLAYER</p>
-                </div>
-                <div class="flex justify-center mt-5 text-2xl">
-                    <p>SCORE</p>
-                </div>
+            <div class="col-span-3 bg-blue-400 flex justify-center mt-5 text-2xl">
+                <p>SCORE 1</p>
+            </div>
+            <div class="col-span-2 bg-green-300 flex justify-center mt-5 text-2xl">
+                <p>DES</p>
+            </div>
+            <div class="col-span-3 bg-blue-400 flex justify-center mt-5 text-2xl">
+                <p>SCORE 2</p>
+            </div>
+            <div class="col-span-3 bg-purple-300 flex justify-center mt-5 text-2xl">
+                <p>CURRENT 1</p>
+            </div>
+            <div class="col-span-2 bg-green-300 flex flex-col justify-center items-center mt-5 text-2xl">
+                <p>ROLL DICE</p>
+                <p>HOLD</p>
+            </div>
+            <div class="col-span-3 bg-purple-300 flex justify-center mt-5 text-2xl">
+                <p>CURRENT 1</p>
             </div>
         </div>
+
 
     </section>
     <script src="./src/js/index.js"></script>
