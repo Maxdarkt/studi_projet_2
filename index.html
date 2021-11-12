@@ -30,13 +30,13 @@
                 <p>PLAYER 2</p>
                 <i id="player-2" class="bi bi-circle-fill text-xs text-pink-300 ml-2 transition-colors duration-500 opacity-0"></i>
             </div>
-            <div class="col-span-3 bg-blue-400 flex justify-center mt-5 text-2xl">
+            <div class="col-span-3 bg-blue-400 flex justify-center items-center mt-5 text-2xl">
                 <p id="global-score-1">0</p>
             </div>
-            <div class="col-span-2 bg-green-300 flex justify-center mt-5 text-2xl">
-                <p id="random">0</p>
+            <div class="col-span-2 bg-green-300 flex flex-col justify-center items-center mt-5 text-2xl">
+                <canvas id="dice" class="my-5" width="80" height="80"></canvas>
             </div>
-            <div class="col-span-3 bg-blue-400 flex justify-center mt-5 text-2xl">
+            <div class="col-span-3 bg-blue-400 flex justify-center items-center mt-5 text-2xl">
                 <p id="global-score-2">0</p>
             </div>
             <div class="col-span-3 bg-purple-300 flex flex-col justify-center items-center mt-5">
@@ -73,5 +73,7 @@
     <script type="text/javascript" src="./src/jQuery/jQuery.js"></script>
     <!-- Script JS-->
     <script type="text/javascript" src="./src/js/index.js"></script>
+    <!-- Canvas JS-->
+    <script type="text/javascript" src="./src/js/canvas.js"></script>
 </body>
 </html>

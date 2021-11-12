@@ -1,10 +1,10 @@
 $(document).ready(() => {
   if(jQuery){
-  console.log('jQuery is included to the page')
+  console.log('jQuery is included to the page index.js')
   //Initialize game
   newGame()
   } else {  
-  console.log('jQuery is not included to the page')
+  console.log('jQuery is not included to the page index.js')
   }
 })
 // PART 1 : class User
@@ -31,7 +31,6 @@ const player2 = new User(false)
 // PART 2 : 3 Actions client
 // 2.1 - Create a new Game : initialize player 1 & 2
 let newGame = () => {
-  $('#player-1').removeClass('opacity-0').addClass('opacity-1')
   player1.active = true
   player1.globalScore = 0
   player1.roundScore = 0
@@ -44,7 +43,26 @@ let newGame = () => {
 let rollDice = () => {
   //Rolling the dice
   let random = Math.floor((Math.random() * 6) + 1)
-  $('#random').text(random)
+  switch(random) {
+    case 1 :
+      numberOne()
+      break;
+    case 2 :
+      numberTwo()
+      break;
+    case 3 :
+      numberThree()
+      break;
+    case 4 :
+      numberFour()
+      break;
+    case 5 :
+      numberFive()
+      break;
+    case 6 :
+      numberSixt()
+      break;
+  }
   if(random === 1){
     loseTheParty()
   } else {
@@ -111,12 +129,16 @@ let displayRoundScore = () => {
 //PART 4 : general functions
 // 4.1 initialize
 let initializeGame = () => {
+  $('#player-1').removeClass('opacity-0').addClass('opacity-1')
+  $('#player-2').removeClass('opacity-1').addClass('opacity-0')
   $('#global-score-1').text(player1.globalScore)
   $('#global-score-2').text(player2.globalScore)
   $('#round-score-1').text(player1.roundScore)
   $('#round-score-2').text(player2.roundScore)
   $('#random').text('?')
   $('#container-play button').removeClass('text-gray-400 cursor-not-allowed')
+  $('#container-play button').prop('disabled', false)
+  initializeDice()
 }
 // 4.2 Change the status of the player when he loses or saves his score (hold)
 let changeStatus = () => {
