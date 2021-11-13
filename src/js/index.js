@@ -32,7 +32,7 @@ const player2 = new User(false)
 // 2.1 - Create a new Game : initialize player 1 & 2
 let newGame = () => {
   player1.active = true
-  player1.globalScore = 95
+  player1.globalScore = 0
   player1.roundScore = 0
   player2.active = false
   player2.globalScore = 0
