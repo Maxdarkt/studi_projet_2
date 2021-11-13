@@ -1,10 +1,10 @@
 $(document).ready(() => {
   if(jQuery){
-  console.log('jQuery is included to the page index.js')
+  console.log('jQuery is included to the page')
   //Initialize game
   newGame()
   } else {  
-  console.log('jQuery is not included to the page index.js')
+  console.log('jQuery is not included to the page')
   }
 })
 // PART 1 : class User
@@ -32,12 +32,13 @@ const player2 = new User(false)
 // 2.1 - Create a new Game : initialize player 1 & 2
 let newGame = () => {
   player1.active = true
-  player1.globalScore = 0
+  player1.globalScore = 95
   player1.roundScore = 0
   player2.active = false
   player2.globalScore = 0
   player2.roundScore = 0
   initializeGame()
+  hideAlert()
 }
 // 2.2 - Roll Dice (Play again)
 let rollDice = () => {
@@ -70,7 +71,7 @@ let rollDice = () => {
   }
 }
 // 2.3 - Hold : Save current score
-let hold = () => {
+let hold = async () => {
   if(player1.active && player1.roundScore !== 0) {
     player1.setGlobalScore(player1.roundScore)
     player1.roundScore = 0
@@ -87,8 +88,24 @@ let hold = () => {
   }
   displayGlobalScore()
   displayRoundScore()
-  isThereAWinner()
-  changeStatus()
+  //Creation of a Promise to wait the answer from isthereAWinner()
+  let isWinnerPromise = new Promise((resolve, reject) => {
+    let  isWinner = isThereAWinner()
+    if(isWinner) {
+      resolve(isWinner)
+    } else {
+      reject(isWinner)
+    }
+  })
+  isWinnerPromise
+  .then(() => {
+    //If there is a winner then we stop the game
+    displayAlert()
+    $('#container-play button').attr('disabled', 'disabled')
+    $('#container-play button').addClass('text-gray-400 cursor-not-allowed')
+  })
+  //Otherwise we change players => changeStatus()
+  .catch(() => changeStatus())
 }
 // PART 3 : operating && display functions
 // 3.1 lose
@@ -130,6 +147,7 @@ let displayRoundScore = () => {
 // 4.1 initialize
 let initializeGame = () => {
   $('#player-1').removeClass('opacity-0').addClass('opacity-1')
+  $('#player-1').prev().removeClass('font-extralight')
   $('#player-2').removeClass('opacity-1').addClass('opacity-0')
   $('#global-score-1').text(player1.globalScore)
   $('#global-score-2').text(player2.globalScore)
@@ -147,22 +165,41 @@ let changeStatus = () => {
     player2.active = true
     $('#player-1').removeClass('opacity-1').addClass('opacity-0')
     $('#player-2').removeClass('opacity-0').addClass('opacity-1')
+    $('#player-1').prev().addClass('font-extralight')
+    $('#player-2').prev().removeClass('font-extralight')
   } else {
     player2.active = false
     player1.active = true
     $('#player-2').removeClass('opacity-1').addClass('opacity-0')
     $('#player-1').removeClass('opacity-0').addClass('opacity-1')
+    $('#player-1').prev().removeClass('font-extralight')
+    $('#player-2').prev().addClass('font-extralight')
   }
 }
 // 4.3 Check if the player has won
 let isThereAWinner = () => {
   if(player1.active && player1.globalScore >= 100){
-    console.log('Player 1 won !🎇')
-    $('#container-play button').attr('disabled', 'disabled')
-    $('#container-play button').addClass('text-gray-400 cursor-not-allowed')
+    let message = 'Le joueur 1 a gagné !!!'
+    $('#response').text(message)
+    return true
   } else if(player2.active && player2.globalScore >= 100) {
-    console.log('Player 2 won !🎇')
-    $('#container-play button').attr('disabled', 'disabled')
-    $('#container-play button').addClass('text-gray-400 cursor-not-allowed')
+    let message = 'Le joueur 2 a gagné !!!'
+    $('#response').text(message)
+    return true
+  }
+  return false
+}
+
+//PART 5 : window alert
+let displayAlert = () => {
+  $('#alert').fadeIn(400)
+}
+
+let hideAlert = () => {
+  $('#alert').fadeOut(400)
+  if($('#alert .opacity-0')){
+    setTimeout(function(){
+      $('#alert').removeClass('opacity-0')
+    },400)
   }
 }
