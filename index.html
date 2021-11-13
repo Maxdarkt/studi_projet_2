@@ -23,24 +23,24 @@
     </div>
     <div id="container-play" class="grid grid-cols-8">
       <div class="col-span-3 flex justify-center items-center mt-5 text-2xl">
-        <p class="font-extralight">PLAYER 1</p>
+        <p class="font-extralight text-lg sm:text-2xl">PLAYER 1</p>
         <i id="player-1" class="bi bi-circle-fill text-xs text-red-500 ml-2 transition-colors duration-500 opacity-0"></i>
       </div>
       <div class="col-end-9 col-span-3 flex justify-center items-center mt-5 text-2xl">
-        <p class="font-extralight">PLAYER 2</p>
+        <p class="font-extralight text-lg sm:text-2xl">PLAYER 2</p>
         <i id="player-2" class="bi bi-circle-fill text-xs text-red-500 ml-2 transition-colors duration-500 opacity-0"></i>
       </div>
       <div class="col-span-3 flex justify-center items-center mt-5 text-2xl">
-        <p id="global-score-1" class="text-6xl font-extralight text-red-400">0</p>
+        <p id="global-score-1" class="text-4xl sm:text-6xl font-extralight text-red-400">0</p>
       </div>
       <div class="col-span-2 flex flex-col justify-center items-center mt-5 text-2xl">
         <canvas id="dice" class="my-5" width="80" height="80"></canvas>
       </div>
       <div class="col-span-3 flex justify-center items-center mt-5 text-2xl">
-        <p id="global-score-2" class="text-6xl font-extralight text-red-400">0</p>
+        <p id="global-score-2" class="text-4xl sm:text-6xl font-extralight text-red-400">0</p>
       </div>
       <div class="col-span-3 flex flex-col justify-center items-center mt-5">
-        <div class="w-1/3 bg-red-500 flex flex-col items-center">
+        <div class="w-3/5 sm:w-1/3 bg-red-500 flex flex-col items-center">
             <p class="text-xs mt-3 mb-1">CURRENT</p>
             <p id="round-score-1" class="text-white text-lg mb-1">0</p>
         </div>
@@ -50,17 +50,17 @@
           <button class="text-xl text-red-400 hover:text-red-600 transition-colors duration-500" type="button" onclick="rollDice()">
             <i class="bi bi-arrow-clockwise"></i>
           </button>
-            <p class="ml-2">ROLL DICE</p>
+            <p class="ml-2 text-sm sm:text-lg">ROLL DICE</p>
         </div>
         <div class="flex items-center mt-5">
           <button class="text-xl text-red-400 hover:text-red-600 transition-colors duration-500" type="button" onclick="hold()">
             <i class="bi bi-box-arrow-in-down"></i>
           </button>
-            <p class="ml-2">HOLD</p>
+            <p class="ml-2 text-sm sm:text-lg">HOLD</p>
         </div>
       </div>
       <div class="col-span-3 flex flex-col justify-center items-center mt-5">
-        <div class="w-1/3 bg-red-500 flex flex-col items-center">
+        <div class="w-3/5 sm:w-1/3 bg-red-500 flex flex-col items-center">
           <p class="text-xs mt-3 mb-1">CURRENT</p>
             <p id="round-score-2" class="text-white text-lg mb-1">0</p>
         </div>
